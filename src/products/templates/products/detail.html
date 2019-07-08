@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+ 
+ 	<div class="row">
+ 		<div class="col-12 col-md-6">
+			     <h1> {{ object.title }}</h1><br/>
+			     {{ object.timestamp|timesince }} ago
+			    {{ object.description|linebreaks }}<br/>
+			    {{ object.price }}<br/>
+			    {% if object.image %}
+
+			<img src='{{ object.image.url }}' class='fluid-img' height="300" width="300" />
+				{% endif %}
+
+ 		</div>
+ 		<div class="col-12 col-md-6">
+ 			{% if object in cart.products.all %}
+ 			In cart <button class="btn btn-link">Remove?</button>
+ 			{% else %}
+ 			<button class="btn btn-success">Add to cart</button>
+ 			{% endif %}
+
+ 		</div>
+
+	</div>
+{% endblock %}	
+
+  
